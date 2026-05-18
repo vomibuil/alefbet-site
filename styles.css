@@ -413,7 +413,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    align-items: start;
+    align-items: stretch;
 }
 
 .pricing-card {
@@ -430,8 +430,7 @@ footer {
     background: linear-gradient(145deg, #534AB7 0%, #3D35A0 100%);
     color: white;
     border: none;
-    box-shadow: 0 24px 64px rgba(83,74,183,0.32);
-    transform: translateY(-8px);
+    box-shadow: 0 20px 56px rgba(83,74,183,0.35);
     padding-top: 44px;
 }
 
