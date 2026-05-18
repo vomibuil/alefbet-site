@@ -1,0 +1,19 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- App Icon background -->
+  <rect width="1024" height="1024" rx="230" fill="#1A1433"/>
+
+  <!-- Alef letter — centered -->
+  <text
+    x="512"
+    y="620"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="'Noto Sans Hebrew', 'Arial Hebrew', serif"
+    font-size="580"
+    font-weight="300"
+    fill="#FFFFFF"
+  >א</text>
+
+  <!-- Purple dot below letter -->
+  <circle cx="512" cy="780" r="38" fill="#7F77DD"/>
+</svg>

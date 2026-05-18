@@ -55,14 +55,9 @@ nav {
 .logo-icon {
     width: 36px;
     height: 36px;
-    background: var(--primary-dark);
     border-radius: 9px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    color: white;
-    font-family: 'Times New Roman', serif;
+    display: block;
+    object-fit: cover;
 }
 
 .logo-text {
@@ -406,6 +401,194 @@ footer {
 
 .footer-copy {
     font-size: 13px;
+}
+
+
+/* PRICING */
+.pricing-section {
+    background: var(--bg-secondary);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: 24px;
+    padding: 32px 28px;
+    border: 1px solid rgba(83,74,183,0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card-pro {
+    background: linear-gradient(145deg, #534AB7 0%, #3D35A0 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 24px 64px rgba(83,74,183,0.32);
+    transform: translateY(-8px);
+    padding-top: 44px;
+}
+
+.pricing-card-yearly {
+    border: 2px solid var(--primary-purple);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(239,159,39,0.4);
+}
+
+.pricing-save {
+    display: inline-block;
+    background: rgba(83,74,183,0.1);
+    color: var(--primary-purple);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+}
+
+.pricing-plan {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.pricing-card-pro .pricing-plan {
+    color: rgba(255,255,255,0.65);
+}
+
+.pricing-price {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.pricing-card-pro .pricing-price {
+    color: white;
+}
+
+.pricing-period {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+}
+
+.pricing-card-pro .pricing-period {
+    color: rgba(255,255,255,0.6);
+}
+
+.pricing-features {
+    list-style: none;
+    margin-bottom: 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.pricing-features li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(83,74,183,0.06);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.pricing-card-pro .pricing-features li {
+    color: rgba(255,255,255,0.85);
+    border-bottom-color: rgba(255,255,255,0.1);
+}
+
+.feat-disabled {
+    opacity: 0.38;
+}
+
+.feat-check {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    background: rgba(83,74,183,0.1);
+    color: var(--primary-purple);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.pricing-card-pro .feat-check {
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
+.feat-cross {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    background: rgba(0,0,0,0.05);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.pricing-btn {
+    width: 100%;
+    margin-top: auto;
+}
+
+.pricing-note {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-top: 36px;
+    opacity: 0.8;
+}
+
+@media (max-width: 860px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+    .pricing-card-pro {
+        transform: none;
+    }
 }
 
 @media (max-width: 640px) {
