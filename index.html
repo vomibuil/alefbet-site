@@ -3,151 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlefBet — Hebrew Translator</title>
-    <meta name="description" content="Smart Hebrew dictionary with AI explanations. Learn Hebrew with AlefBet — 10,000+ words, verb conjugations, examples, and pronunciation.">
+    <title>AlefBet — Hebrew Dictionary</title>
+    <meta name="description" content="A modern Hebrew dictionary. 11,000+ words with nikud, verb conjugations, roots, transcription, examples and flashcards — fully offline.">
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav>
+<nav class="nav-dark">
     <div class="nav-inner">
         <a href="index.html" class="logo">
-            <img src="alefbet_logo.svg" class="logo-icon" alt="AlefBet logo">
+            <img class="logo-icon" src="logo.png" alt="AlefBet logo" width="38" height="38">
             <span class="logo-text">AlefBet</span>
         </a>
         <ul class="nav-links">
             <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing</a></li>
             <li><a href="support.html">Support</a></li>
             <li><a href="privacy.html">Privacy</a></li>
         </ul>
-        <a href="#download" class="btn" style="padding: 9px 18px; font-size: 14px;">Download</a>
+        <a href="#download" class="btn btn-white-sm">Download</a>
     </div>
 </nav>
 
+<!-- HERO — immersive purple gradient (mirrors the app's flashcard mode) -->
 <section class="hero">
-    <div class="hero-badge">Available on the App Store</div>
-    <h1>Hebrew dictionary<br>powered by <span>AI</span></h1>
-    <p>10,000+ words with nikud, verb conjugations, root analysis, examples, and AI explanations — all offline.</p>
-    <div class="hero-buttons">
-        <a href="#download" class="btn btn-white">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            Download on App Store
-        </a>
-        <a href="support.html" class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">Learn more</a>
+    <div class="hero-glow"></div>
+    <span class="hero-alef" aria-hidden="true">א</span>
+    <div class="hero-content">
+        <div class="hero-badge">Available on the App Store</div>
+        <h1>The Hebrew dictionary<br>you actually understand</h1>
+        <p>11,000+ words with nikud, verb conjugations, roots, transcription and examples — plus flashcards to make them stick. Fully offline.</p>
+        <div class="hero-buttons">
+            <a href="#download" class="btn btn-white">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download on App Store
+            </a>
+            <a href="#features" class="btn btn-ghost">Learn more</a>
+        </div>
+
+        <!-- Glassmorphic word card — a real dictionary entry -->
+        <div class="word-card">
+            <div class="word-card-top">
+                <span class="word-card-pos">noun</span>
+                <span class="word-card-level">A1</span>
+            </div>
+            <div class="word-he" lang="he" dir="rtl">שָׁלוֹם</div>
+            <div class="word-ru">hello · peace</div>
+            <div class="word-tr">shalóm</div>
+            <div class="word-root">
+                <span class="word-root-label">ROOT · שׁוֹרֶשׁ</span>
+                <span class="word-root-letters" lang="he" dir="rtl">שׁ — ל — ם</span>
+            </div>
+        </div>
     </div>
 </section>
 
+<!-- FEATURES -->
 <section class="section" id="features">
     <div class="section-inner">
         <div class="section-label">Features</div>
-        <h2>Everything you need<br>to learn Hebrew</h2>
-        <p class="section-sub">From beginner A1 to advanced C2 — AlefBet covers it all with a clean, fast interface.</p>
+        <h2>Everything you need<br>to read and learn Hebrew</h2>
+        <p class="section-sub">From beginner A1 to advanced C2 — a clean, fast dictionary that works entirely on your device.</p>
 
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">📖</div>
-                <h3>10,000+ Words</h3>
-                <p>Comprehensive dictionary with nikud (vowel marks), transcription in Russian and English, and CEFR levels A1–C2.</p>
+                <div class="feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <h3>11,000+ Words</h3>
+                <p>A comprehensive dictionary with nikud (vowel marks), modern spelling, and CEFR levels from A1 to C2.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">✦</div>
-                <h3>AI Explanations</h3>
-                <p>Powered by Claude AI — get detailed explanations of word meaning, usage context, and nuances.</p>
+                <div class="feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h3>Root & Binyan</h3>
+                <p>Every verb shows its Hebrew root (shoresh) and binyan, with past, present and future forms. Understand word families and patterns.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">שׁ</div>
-                <h3>Root Analysis</h3>
-                <p>See the Hebrew root (shoresh) and binyan for every verb. Understand word families and patterns.</p>
+                <div class="feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h12M9 3v2c0 6-4 9-7 10M5 9c0 4 5 7 9 8"/><path d="M13 21l5-11 5 11M15.5 16h6"/></svg>
+                </div>
+                <h3>Russian & English</h3>
+                <p>Each word comes with a clear translation and transcription in both Russian and English, so the pronunciation is never a guess.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🔊</div>
-                <h3>Pronunciation</h3>
-                <p>Native text-to-speech pronunciation for every word. Train your ear with real Hebrew sounds.</p>
+                <div class="feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+                </div>
+                <h3>Flashcards & Quizzes</h3>
+                <p>Turn any level or letter into a deck. Swipe to learn, test yourself, and review the words you didn't know.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+                </div>
+                <h3>Favorites & Recents</h3>
+                <p>Save words to favorites and revisit everything you've looked up. Build your own study list as you go.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12" y2="20"/></svg>
+                </div>
                 <h3>Works Offline</h3>
-                <p>Full dictionary available without internet. Search, browse, and study anywhere — on the plane, in the subway.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">♡</div>
-                <h3>Favorites & History</h3>
-                <p>Save words to favorites, track your translation history. Review what you've learned at any time.</p>
+                <p>The entire dictionary lives on your device. Search, browse and study anywhere — no internet, no account, no tracking.</p>
             </div>
         </div>
     </div>
 </section>
 
-
-<section class="section pricing-section" id="pricing">
-    <div class="section-inner">
-        <div class="section-label">Pricing</div>
-        <h2>Simple, transparent<br>pricing</h2>
-        <p class="section-sub">Start learning for free. Upgrade to Pro for unlimited AI access and all study features.</p>
-
-        <div class="pricing-grid">
-
-            <!-- Free -->
-            <div class="pricing-card">
-                <div class="pricing-plan">Free</div>
-                <div class="pricing-price">$0</div>
-                <div class="pricing-period">forever</div>
-                <ul class="pricing-features">
-                    <li><span class="feat-check">✓</span> Full offline dictionary (10,000+ words)</li>
-                    <li><span class="feat-check">✓</span> 5 AI translations per hour</li>
-                    <li><span class="feat-check">✓</span> Translation history</li>
-                    <li><span class="feat-check">✓</span> Up to 20 saved favorites</li>
-                    <li><span class="feat-check">✓</span> Flashcard mode (A1–A2 levels)</li>
-                </ul>
-                <a href="#download" class="btn btn-outline pricing-btn">Get Started</a>
-            </div>
-
-            <!-- Monthly PRO -->
-            <div class="pricing-card pricing-card-pro">
-                <div class="pricing-badge">Most Popular</div>
-                <div class="pricing-plan">Pro Monthly</div>
-                <div class="pricing-price">$3.99</div>
-                <div class="pricing-period">per month</div>
-                <ul class="pricing-features">
-                    <li><span class="feat-check">✓</span> Everything in Free</li>
-                    <li><span class="feat-check">✓</span> Unlimited AI translations</li>
-                    <li><span class="feat-check">✓</span> Unlimited favorites</li>
-                    <li><span class="feat-check">✓</span> All flashcard levels (A1–C2)</li>
-                    <li><span class="feat-check">✓</span> Priority AI responses</li>
-                </ul>
-                <a href="#download" class="btn pricing-btn" style="background: white; color: #534AB7;">Try Free for 7 Days</a>
-            </div>
-
-            <!-- Yearly PRO -->
-            <div class="pricing-card pricing-card-yearly">
-                <div class="pricing-save">Save 37%</div>
-                <div class="pricing-plan">Pro Yearly</div>
-                <div class="pricing-price">$29.99</div>
-                <div class="pricing-period">per year &middot; just $2.50/mo</div>
-                <ul class="pricing-features">
-                    <li><span class="feat-check">✓</span> Everything in Free</li>
-                    <li><span class="feat-check">✓</span> Unlimited AI translations</li>
-                    <li><span class="feat-check">✓</span> Unlimited favorites</li>
-                    <li><span class="feat-check">✓</span> All flashcard levels (A1–C2)</li>
-                    <li><span class="feat-check">✓</span> Priority AI responses</li>
-                </ul>
-                <a href="#download" class="btn pricing-btn">Try Free for 7 Days</a>
-            </div>
-
-        </div>
-
-        <p class="pricing-note">✦ 7-day free trial &nbsp;&middot;&nbsp; Cancel anytime &nbsp;&middot;&nbsp; Managed via App Store</p>
-    </div>
-</section>
-
+<!-- CTA -->
 <section class="cta-section" id="download">
-    <h2>Start learning Hebrew today</h2>
-    <p>Free to download. Pro features available by subscription.</p>
-    <a href="https://apps.apple.com/app/alefbet" class="btn btn-white">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Download on App Store
-    </a>
+    <span class="cta-alef" aria-hidden="true">א</span>
+    <div class="cta-content">
+        <h2>Start learning Hebrew today</h2>
+        <p>Free to download. Pro unlocks the full dictionary, unlimited favorites and all flashcard levels.</p>
+        <a href="https://apps.apple.com/app/alefbet" class="btn btn-white">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Download on App Store
+        </a>
+    </div>
 </section>
 
 <footer>
