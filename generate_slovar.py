@@ -33,6 +33,8 @@ def slugify(ru):
     s = ru.lower().strip()
     s = "".join(TRANSLIT.get(ch, ch) for ch in s)
     s = re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+    if s == "index":  # index.html занят каталогом раздела
+        s = "index-slovo"
     return s or "slovo"
 
 def esc(s):
@@ -42,7 +44,41 @@ def first_ru(ru):
     # первое значение до запятой/точки с запятой — для заголовков
     return re.split(r"[,;(]", ru)[0].strip()
 
-def page(word, slug, related):
+def first_en(en):
+    return re.split(r"[,;(]", en or "")[0].strip()
+
+def slugify_en(en):
+    s = first_en(en).lower()
+    s = re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+    if s == "index":  # index.html занят каталогом раздела
+        s = "index-word"
+    return s or "word"
+
+def build_entries(words, levels):
+    """(slug, word) со стабильными слагами — общая база для /slovar/ и /dictionary/."""
+    core = [w for w in words if w.get("level") in levels and w.get("ru") and w.get("he")]
+    entries, used = [], {}
+    for w in sorted(core, key=lambda x: (x.get("level"), first_ru(x["ru"]).lower())):
+        base = slugify(first_ru(w["ru"]))
+        slug = base
+        n = used.get(base, 0)
+        if n:
+            slug = f"{base}-{n + 1}"
+        used[base] = n + 1
+        entries.append((slug, w))
+    return entries
+
+def build_en_slugs(entries):
+    """ru-слаг → en-слаг; та же логика коллизий, что и у русских слагов."""
+    used, out = {}, {}
+    for ru_slug, w in entries:
+        base = slugify_en(w.get("en") or "")
+        n = used.get(base, 0)
+        out[ru_slug] = f"{base}-{n + 1}" if n else base
+        used[base] = n + 1
+    return out
+
+def page(word, slug, related, en_slug):
     ru_short = first_ru(word["ru"])
     he = word["he"]
     tr = word.get("transcription") or ""
@@ -96,6 +132,9 @@ def page(word, slug, related):
     <title>{esc(title)}</title>
     <meta name="description" content="{esc(desc)}">
     <link rel="canonical" href="{SITE}/slovar/{slug}.html">
+    <link rel="alternate" hreflang="ru" href="{SITE}/slovar/{slug}.html">
+    <link rel="alternate" hreflang="en" href="{SITE}/dictionary/{en_slug}.html">
+    <link rel="alternate" hreflang="x-default" href="{SITE}/dictionary/{en_slug}.html">
     <link rel="icon" type="image/png" href="../logo.png">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="slovar.css">
@@ -169,6 +208,9 @@ def index_page(entries):
     <title>Русско-ивритский словарь онлайн — {len(entries)} слов с транскрипцией | AlefBet</title>
     <meta name="description" content="Как будет по-иврите: {len(entries)} частотных слов с огласовками, транскрипцией и примерами. Бесплатный онлайн-словарь иврита AlefBet.">
     <link rel="canonical" href="{SITE}/slovar/">
+    <link rel="alternate" hreflang="ru" href="{SITE}/slovar/">
+    <link rel="alternate" hreflang="en" href="{SITE}/dictionary/">
+    <link rel="alternate" hreflang="x-default" href="{SITE}/dictionary/">
     <link rel="icon" type="image/png" href="../logo.png">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="slovar.css">
@@ -212,18 +254,8 @@ def main():
     levels = set(args.levels.split(","))
 
     words = json.load(open(WORDS_JSON))
-    core = [w for w in words if w.get("level") in levels and w.get("ru") and w.get("he")]
-
-    # стабильные слаги с разрешением коллизий
-    entries, used = [], {}
-    for w in sorted(core, key=lambda x: (x.get("level"), first_ru(x["ru"]).lower())):
-        base = slugify(first_ru(w["ru"]))
-        slug = base
-        n = used.get(base, 0)
-        if n:
-            slug = f"{base}-{n + 1}"
-        used[base] = n + 1
-        entries.append((slug, w))
+    entries = build_entries(words, levels)
+    en_slugs = build_en_slugs(entries)
 
     if os.path.isdir(OUT_DIR):
         for f in os.listdir(OUT_DIR):
@@ -242,14 +274,16 @@ def main():
 
     for slug, w in entries:
         with open(os.path.join(OUT_DIR, f"{slug}.html"), "w") as f:
-            f.write(page(w, slug, pick_related(slug, w.get("level"))))
+            f.write(page(w, slug, pick_related(slug, w.get("level")), en_slugs[slug]))
 
     with open(os.path.join(OUT_DIR, "index.html"), "w") as f:
         f.write(index_page(entries))
 
-    # sitemap
-    static_pages = ["", "support.html", "privacy.html", "terms.html", "slovar/"]
-    urls = [f"{SITE}/{p}" for p in static_pages] + [f"{SITE}/slovar/{s}.html" for s, _ in entries]
+    # sitemap: статика + оба словаря (/slovar/ ru и /dictionary/ en)
+    static_pages = ["", "support.html", "privacy.html", "terms.html", "slovar/", "dictionary/"]
+    urls = ([f"{SITE}/{p}" for p in static_pages]
+            + [f"{SITE}/slovar/{s}.html" for s, _ in entries]
+            + [f"{SITE}/dictionary/{en_slugs[s]}.html" for s, _ in entries])
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     sm += [f"  <url><loc>{u}</loc></url>" for u in urls]
