@@ -49,13 +49,14 @@
 <script>
     // TikTok's in-app browser blocks App Store links: try the itms-apps:// scheme, and point at the ⋯ menu.
     var btn = document.querySelector('.btn');
-    if (/iPhone|iPad/.test(navigator.userAgent) && /musical_ly|Bytedance|TikTok/i.test(navigator.userAgent)) {
+    if (/iPhone|iPad/.test(navigator.userAgent) && (/musical_ly|Bytedance|TikTok/i.test(navigator.userAgent) || !/Safari\//.test(navigator.userAgent))) {
         document.querySelector('.tt').hidden = false;
         btn.addEventListener('click', function (e) {
             e.preventDefault();
             location.href = btn.href.replace('https://', 'itms-apps://');
         });
     }
+    if (/[?&]ua/.test(location.search)) document.querySelector('.hint').textContent = navigator.userAgent;
 </script>
 </body>
 </html>
