@@ -26,6 +26,12 @@
             background: #fff; color: #1c1240; font-size: 18px; font-weight: 600; text-decoration: none;
         }
         .hint { font-size: 13px; opacity: .6; }
+        .tt {
+            position: fixed; top: 12px; right: 12px; padding: 12px 40px 12px 14px; border-radius: 14px;
+            background: #fff; color: #1c1240; font-size: 15px; line-height: 1.35; text-align: left;
+            box-shadow: 0 8px 30px rgba(0,0,0,.35);
+        }
+        .tt span { position: absolute; top: 6px; right: 12px; font-size: 22px; }
     </style>
 </head>
 <body>
@@ -39,14 +45,15 @@
     </a>
     <p class="hint">Не открывается? Нажми ⋯ справа вверху → «Открыть в браузере»</p>
 </main>
+<div class="tt" hidden>Нажми <b>⋯</b> вверху справа<br>→ «Открыть в браузере»<span>↗</span></div>
 <script>
-    // TikTok's in-app browser blocks App Store links; on iOS 17+ x-safari-https:// hands the link to Safari.
+    // TikTok's in-app browser blocks App Store links: try the itms-apps:// scheme, and point at the ⋯ menu.
     var btn = document.querySelector('.btn');
     if (/iPhone|iPad/.test(navigator.userAgent) && /musical_ly|Bytedance|TikTok/i.test(navigator.userAgent)) {
+        document.querySelector('.tt').hidden = false;
         btn.addEventListener('click', function (e) {
             e.preventDefault();
-            location.href = 'x-safari-' + btn.href;
-            setTimeout(function () { if (!document.hidden) location.href = btn.href; }, 1500);
+            location.href = btn.href.replace('https://', 'itms-apps://');
         });
     }
 </script>
