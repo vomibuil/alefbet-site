@@ -8,7 +8,10 @@ from gen_common import SITE
 
 def main():
     import generate_glagoly, generate_slovar, generate_dictionary
-    import generate_sleng, generate_temy, generate_alfavit
+    import generate_sleng, generate_temy, generate_alfavit, generate_landing
+    # ВНИМАНИЕ: полная пересборка из нынешнего Words.json меняет слаги /slovar/ и /dictionary/
+    # (индексированные адреса пропадут) — до редиректов гонять только отдельные генераторы.
+    generate_landing.generate()
 
     verb_entries = generate_glagoly.generate()
     entries, en_slugs = generate_slovar.generate()
@@ -17,7 +20,7 @@ def main():
     temy = generate_temy.generate()
     letters = generate_alfavit.generate()
 
-    static_pages = ["", "support.html", "privacy.html", "terms.html",
+    static_pages = ["", "en/", "support.html", "privacy.html", "terms.html",
                     "slovar/", "dictionary/", "sleng/", "temy/", "alfavit/", "glagoly/"]
     urls = ([f"{SITE}/{p}" for p in static_pages]
             + [f"{SITE}/slovar/{s}.html" for s, _ in entries]
