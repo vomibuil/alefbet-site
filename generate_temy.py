@@ -123,7 +123,7 @@ def tag_page(topic, words, lang):
     </article>"""
     canon = ru_url if lang == "ru" else en_url
     return shell(lang=lang, title=t["page_title"], desc=t["desc"], canonical=canon, body=body,
-                 alternates=alts, jsonld=[breadcrumb_ld([("AlefBet", f"{SITE}/"), (t["title"], None)])])
+                 alternates=alts, jsonld=[breadcrumb_ld([("AlefBet", f"{SITE}/" if lang == "ru" else f"{SITE}/en/"), (t["title"], None)])])
 
 def generate_tagged():
     """Только страницы тем по тегу (+ индекс /temy/): остальные 13 тем не перегенерируются."""

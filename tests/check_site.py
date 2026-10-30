@@ -139,5 +139,26 @@ class Hanukkah(unittest.TestCase):
         self.assertIn('class="wl-ex"', row)
 
 
+class ReviewFixes(unittest.TestCase):
+    def test_en_breadcrumb_points_to_en(self):
+        h = read("dictionary/air.html")
+        self.assertIn('<p class="sl-breadcrumb"><a href="../en/index.html">AlefBet</a>', h)
+        self.assertNotIn('"item": "https://alefbet.tech/"', h)
+        self.assertIn('"item": "https://alefbet.tech/en/"', h)
+        self.assertNotIn('"item": "https://alefbet.tech/"', read("en/hanukkah-in-hebrew.html"))
+
+    def test_landing_fonts_have_fallback(self):
+        css = read("landing.css")
+        for decl in re.findall(r"font:([^;}]*)", css):
+            if "Manrope" in decl or "JetBrains" in decl:
+                self.assertIn(",", decl, decl)
+
+    def test_legal_pages_link_en(self):
+        for p in ("support.html", "privacy.html", "terms.html"):
+            h = read(p)
+            self.assertNotRegex(h, r'href="index\.html', p)
+            self.assertIn('href="en/index.html', h, p)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -63,7 +63,7 @@ def page(word, slug, ru_slug, related):
       <ul class="sl-links">{links}</ul>"""
 
     body = f"""    <article>
-      <p class="sl-breadcrumb"><a href="../index.html">AlefBet</a> → <a href="index.html">Hebrew dictionary</a> → {esc(en_short)}</p>
+      <p class="sl-breadcrumb"><a href="../en/index.html">AlefBet</a> → <a href="index.html">Hebrew dictionary</a> → {esc(en_short)}</p>
       <h1>How to say “{esc(en_short)}” in Hebrew</h1>
       {card}{verb_block}{ex_block}
       {cta("en")}{rel_block}
@@ -78,7 +78,7 @@ def page(word, slug, ru_slug, related):
     jsonld = [
         faq_ld([(f"How do you say “{en_short}” in Hebrew?",
                  f"“{en_short.capitalize()}” in Hebrew is {he}, pronounced “{tr}”. {pos.capitalize()}, level {level}.")]),
-        breadcrumb_ld([("AlefBet", f"{SITE}/"), ("Hebrew dictionary", f"{SITE}/dictionary/"), (en_short, None)]),
+        breadcrumb_ld([("AlefBet", f"{SITE}/en/"), ("Hebrew dictionary", f"{SITE}/dictionary/"), (en_short, None)]),
     ]
     return shell(lang="en", title=title, desc=desc, canonical=f"{SITE}/dictionary/{slug}.html",
                  body=body, alternates=alternates, jsonld=jsonld)
