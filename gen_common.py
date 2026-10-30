@@ -5,7 +5,7 @@ import html, json as _json, os, re
 SITE = "https://alefbet.tech"
 APP_URL = "https://apps.apple.com/app/alefbet-hebrew-dictionary/id6782951189"
 # Provider token из ASC (Аналитика → Источники → «Создать ссылку кампании»); пусто — без pt
-PROVIDER_TOKEN = ""
+PROVIDER_TOKEN = "129064266"
 
 def app_url(ct):
     """Ссылка на App Store с меткой кампании (ct), видна в ASC → Источники."""
