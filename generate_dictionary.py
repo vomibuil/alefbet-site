@@ -25,7 +25,7 @@ def page(word, slug, ru_slug, related):
     level = word.get("level") or ""
     title = f"“{en_short.capitalize()}” in Hebrew — {he} ({tr}) | AlefBet"
     desc = (f"How to say “{en_short}” in Hebrew: {he}, pronounced “{tr}”, "
-            f"{pos}, with usage examples. AlefBet — 11,000+ Hebrew words offline.")
+            f"{pos}, with usage examples. AlefBet — 12,700+ Hebrew words offline.")
 
     card = word_card(he=he, main=word.get("en") or "", tr=tr, chips=(pos, level),
                      root_chip=word.get("shoresh") or "", word_id=word.get("id"))
@@ -97,7 +97,7 @@ def index_page(pairs):
     nav_letters = "".join(f'<a href="#{esc(l)}">{esc(l)}</a>' for l in sorted(by_letter))
     body = f"""    <h1>English–Hebrew dictionary</h1>
     <p class="sl-lead">Frequent Hebrew words with nikkud (vowel marks), transcription, audio and examples.
-    The full dictionary — 11,000+ words — is in the <a href="{APP_URL}">AlefBet app</a>.</p>
+    The full dictionary — 12,700+ words — is in the <a href="{APP_URL}">AlefBet app</a>.</p>
     <p class="sl-letters">{nav_letters}</p>
     {sections}
     {cta("en")}"""

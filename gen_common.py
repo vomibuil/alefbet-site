@@ -4,6 +4,13 @@ import html, json as _json, os, re
 
 SITE = "https://alefbet.tech"
 APP_URL = "https://apps.apple.com/app/alefbet-hebrew-dictionary/id6782951189"
+# Provider token из ASC (Аналитика → Источники → «Создать ссылку кампании»); пусто — без pt
+PROVIDER_TOKEN = ""
+
+def app_url(ct):
+    """Ссылка на App Store с меткой кампании (ct), видна в ASC → Источники."""
+    pt = f"pt={PROVIDER_TOKEN}&" if PROVIDER_TOKEN else ""
+    return f"https://apps.apple.com/app/id6782951189?{pt}ct={ct}&mt=8"
 APP_ID = "6782951189"
 WORDS_JSON = os.path.join(os.path.dirname(__file__), "..", "HebrewTranslator", "Words.json")
 AUDIO_DIR = os.path.join(os.path.dirname(__file__), "audio", "w")
@@ -63,10 +70,10 @@ def badge(lang="ru"):
 
 def cta(lang="ru"):
     if lang == "ru":
-        text = ("<strong>AlefBet</strong> — словарь иврита в вашем кармане: 11 000+ слов с огласовками, "
+        text = ("<strong>AlefBet</strong> — словарь иврита в вашем кармане: 12 700+ слов с огласовками, "
                 "корни, спряжения глаголов и флешкарты. Работает офлайн.")
     else:
-        text = ("<strong>AlefBet</strong> — the Hebrew dictionary in your pocket: 11,000+ words with nikkud, "
+        text = ("<strong>AlefBet</strong> — the Hebrew dictionary in your pocket: 12,700+ words with nikkud, "
                 "roots, verb conjugations and flashcards. Works offline.")
     return (f'<aside class="cta-band"><span class="cta-band-alef" aria-hidden="true">א</span>'
             f'<div class="cta-band-inner"><p>{text}</p>{badge(lang)}</div></aside>')
@@ -105,7 +112,7 @@ def shell(*, lang, title, desc, canonical, body, root="..", alternates="", jsonl
 
 <nav>
     <div class="nav-inner">
-        <a href="{root}/index.html" class="logo">
+        <a href="{root}/{'en/' if lang == 'en' else ''}index.html" class="logo">
             <img class="logo-icon" src="{root}/logo.png" alt="AlefBet logo" width="38" height="38">
             <span class="logo-text">AlefBet</span>
         </a>
