@@ -29,10 +29,15 @@ def synth(text, out_path):
 def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     words = json.load(open(WORDS_JSON))
-    # озвучиваем: все слова A1 (страницы /slovar/) + глаголы A2 (страницы /glagoly/)
-    todo = [w for w in words
-            if w.get("he") and w.get("id")
-            and (w.get("level") == "A1" or (w.get("pos") == "verb" and w.get("level") == "A2"))]
+    if "--ids" in sys.argv:
+        # точечно: python3 generate_audio.py --ids <id> <id> … (например, слова «Хануки»)
+        ids = set(sys.argv[sys.argv.index("--ids") + 1:])
+        todo = [w for w in words if w.get("id") in ids and w.get("he")]
+    else:
+        # озвучиваем: все слова A1 (страницы /slovar/) + глаголы A2 (страницы /glagoly/)
+        todo = [w for w in words
+                if w.get("he") and w.get("id")
+                and (w.get("level") == "A1" or (w.get("pos") == "verb" and w.get("level") == "A2"))]
     done = skipped = failed = 0
     for w in todo:
         out = os.path.join(OUT_DIR, f'{w["id"]}.m4a')

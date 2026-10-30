@@ -91,5 +91,53 @@ class Landing(unittest.TestCase):
         self.assertIn('href="hanukkah-in-hebrew.html"', read(self.EN))
 
 
+class Hanukkah(unittest.TestCase):
+    RU, EN = "temy/hanuka-na-ivrite.html", "en/hanukkah-in-hebrew.html"
+
+    def rows(self, html):
+        lst = re.search(r'<ul class="sl-wordlist">(.*?)</ul>', html, re.S).group(1)
+        return re.findall(r"<li>.*?</li>", lst, re.S)
+
+    def test_hanuka_ru(self):
+        h = read(self.RU)
+        self.assertEqual(len(self.rows(h)), 28)
+        self.assertGreaterEqual(h.count('class="wl-ex"'), 28)
+        self.assertIn("ct=site_hanuka", h)
+        self.assertIn('hreflang="en" href="https://alefbet.tech/en/hanukkah-in-hebrew.html"', h)
+        self.assertIn('hreflang="ru" href="https://alefbet.tech/temy/hanuka-na-ivrite.html"', h)
+
+    def test_hanuka_en(self):
+        h = read(self.EN)
+        self.assertIn('<html lang="en"', h)
+        self.assertEqual(len(self.rows(h)), 28)
+        self.assertIn("Hanukkah", h)
+        self.assertIn('hreflang="ru" href="https://alefbet.tech/temy/hanuka-na-ivrite.html"', h)
+        self.assertIn("ct=site_hanuka", h)
+
+    def test_hanuka_specific_words_first(self):
+        for p in (self.RU, self.EN):
+            first = self.rows(read(p))[:4]
+            self.assertIn("חֲנוּכָּה", first[0], p)
+            self.assertTrue(any("סְבִיבוֹן" in r for r in first), p)
+
+    def test_hanuka_intro_hebrew_isolated(self):
+        for p in (self.RU, self.EN):
+            h = read(p)
+            self.assertRegex(h, r'<bdi[^>]*>חג האורים</bdi>', p)
+            self.assertRegex(h, r'<bdi[^>]*>נ ג ה פ</bdi>', p)
+
+    def test_other_temy_unchanged(self):
+        self.assertNotIn("wl-ex", read("temy/eda-na-ivrite.html"))
+
+    def test_missing_audio_no_button(self):
+        import generate_temy
+        w = {"id": "x-no-audio", "he": "נֵס", "ru": "чудо", "en": "miracle", "transcription": "нэс",
+             "examples": [{"he": "נֵס גָּדוֹל", "ru": "большое чудо", "en": "a great miracle"}]}
+        with mock.patch.object(generate_temy, "has_audio", lambda _id: False):
+            row = generate_temy.tag_row(w, "ru", examples=True)
+        self.assertNotIn('class="play', row)
+        self.assertIn('class="wl-ex"', row)
+
+
 if __name__ == "__main__":
     unittest.main()
