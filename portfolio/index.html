@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Илья Любимов · портфолио</title>
+<meta name="description" content="Приложения, сайты и видео под ключ. Разработчик из Израиля: проекты, примеры работ и контакты.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Илья Любимов · портфолио">
+<meta property="og:description" content="Приложения, сайты и видео под ключ.">
+<meta property="og:image" content="https://alefbet.tech/portfolio/a/site-landing.jpg">
+<link rel="icon" href="/logo.png">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600&family=Rubik:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: a showroom. Quiet white hero with oversized type and the four real app icons;
+   then every app gets a full-width panel in its own brand colour with a real screen in a phone. */
+:root {
+  --bg: #f4f4f6;
+  --fg: #0d0d12;
+  --muted: #5b5d6b;
+  --line: #d9dae1;
+  --chip: #ffffff;
+  --live: #12a150;
+  --font-display: "Unbounded", "Rubik", "Arial Hebrew", Arial, sans-serif;
+  --font-text: "Onest", "Rubik", "Arial Hebrew", Arial, sans-serif;
+  --radius: 34px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #0d0d12; --fg: #f2f2f5; --muted: #a3a5b3; --line: #2a2b36; --chip: #191a22; --live: #3ddc84; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #0d0d12; --fg: #f2f2f5; --muted: #a3a5b3; --line: #2a2b36; --chip: #191a22; --live: #3ddc84; color-scheme: dark; }
+:root[lang="he"] { --font-display: "Rubik", "Arial Hebrew", Arial, sans-serif; --font-text: "Rubik", "Arial Hebrew", Arial, sans-serif; }
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-text); font-size: 17px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 72px;
+}
+.wrap { max-width: 1120px; margin-inline: auto; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; border-radius: 8px; }
+
+/* top */
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 20px; }
+.me { font-weight: 600; }
+.langs { display: flex; gap: 4px; background: var(--chip); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+.langs button { font: 500 14px/1 var(--font-text); background: none; color: var(--muted); border: 0; border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+.langs button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+
+/* hero */
+.hero { padding-block: 48px 64px; display: grid; gap: 36px; }
+.hero h1 {
+  margin: 0; font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(34px, 7.4vw, 100px); line-height: 1.02; letter-spacing: -0.035em;
+  text-wrap: balance; overflow-wrap: anywhere;
+}
+:root[lang="he"] .hero h1 { letter-spacing: -0.01em; line-height: 1.08; }
+.hero-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px 48px; align-items: end; }
+.lead { margin: 0; max-width: 52ch; font-size: 19px; color: var(--muted); }
+.open { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; font-weight: 500; color: var(--fg); }
+.open i { width: 10px; height: 10px; border-radius: 50%; background: var(--live); flex: none; }
+.shelf { display: flex; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.shelf a { display: block; border-radius: 22.5%; transition: transform .2s ease; }
+.shelf a:hover { transform: translateY(-6px); }
+.shelf img { display: block; width: 84px; height: 84px; border-radius: 22.5%; box-shadow: 0 10px 24px -10px rgba(13, 13, 18, .45); }
+.shelf li { animation: drop .7s cubic-bezier(.2, .9, .25, 1.15) both; }
+.shelf li:nth-child(2) { animation-delay: .08s; }
+.shelf li:nth-child(3) { animation-delay: .16s; }
+.shelf li:nth-child(4) { animation-delay: .24s; }
+@keyframes drop { from { transform: translateY(-40px) rotate(-8deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .shelf li { animation: none; } .shelf a { transition: none; } }
+
+/* app panels */
+.apps { display: grid; gap: 20px; }
+.app {
+  --p-bg: #534ab7; --p-fg: #ffffff; --p-soft: rgba(255, 255, 255, .72); --p-btn-bg: #ffffff; --p-btn-fg: #2b2470;
+  background: var(--p-bg); color: var(--p-fg);
+  border-radius: var(--radius); overflow: hidden;
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 24px;
+  padding: 48px 48px 0; min-height: 540px;
+}
+.app.subtext { --p-bg: #17121f; --p-fg: #f6f0ff; --p-soft: rgba(246, 240, 255, .66); --p-btn-bg: #ff6f91; --p-btn-fg: #1d0a12; }
+.app.klita { --p-bg: linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #db2777 100%); --p-fg: #ffffff; --p-soft: rgba(255, 255, 255, .8); --p-btn-bg: #ffffff; --p-btn-fg: #3b2bb3; }
+.app.chip { --p-bg: #f8ecd4; --p-fg: #1c2a22; --p-soft: rgba(28, 42, 34, .7); --p-btn-bg: #ffb52e; --p-btn-fg: #2a1a00; }
+.app.site { --p-bg: #0d0d12; --p-fg: #f2f2f5; --p-soft: rgba(242, 242, 245, .66); --p-btn-bg: #f2f2f5; --p-btn-fg: #0d0d12; border: 1px solid #2a2b36; }
+.app-text { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding-bottom: 48px; min-width: 0; }
+.app-id { display: flex; align-items: center; gap: 14px; }
+.app-id img { width: 56px; height: 56px; border-radius: 22.5%; flex: none; }
+.state { font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 999px; border: 1.5px solid currentColor; }
+.app h2 { margin: 6px 0 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 5.2vw, 64px); line-height: 1; letter-spacing: -0.03em; overflow-wrap: anywhere; }
+:root[lang="he"] .app h2 { letter-spacing: 0; }
+.app p { margin: 0; max-width: 46ch; font-size: 18px; color: var(--p-soft); }
+.app .made { font-size: 15px; }
+.btn { display: inline-block; margin-top: auto; font-weight: 600; text-decoration: none; background: var(--p-btn-bg); color: var(--p-btn-fg); padding: 14px 22px; border-radius: 999px; }
+.btn:hover { filter: brightness(.94); }
+.later { margin-top: auto; font-weight: 500; color: var(--p-soft); }
+.app-shot { display: flex; justify-content: center; align-items: flex-end; min-width: 0; }
+.phone { width: min(270px, 100%); aspect-ratio: 520 / 980; border-radius: 40px 40px 0 0; border: 9px solid #08080c; border-bottom: 0; background: #08080c; overflow: hidden; transform: rotate(3deg) translateY(10px); transform-origin: bottom center; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .55); }
+.phone img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.bigicon { align-self: center; padding-bottom: 48px; }
+.bigicon img { display: block; width: min(240px, 60vw); border-radius: 22.5%; transform: rotate(-6deg); box-shadow: 0 40px 70px -24px rgba(0, 0, 0, .6); }
+.browser { align-self: flex-end; width: 100%; max-width: 380px; background: #17181f; border: 1px solid #2a2b36; border-bottom: 0; border-radius: 16px 16px 0 0; overflow: hidden; direction: ltr; text-align: left; }
+.browser-bar { display: flex; align-items: center; gap: 6px; padding: 12px 14px; border-bottom: 1px solid #2a2b36; }
+.browser-bar span { width: 10px; height: 10px; border-radius: 50%; background: #3a3c49; }
+.browser-bar b { margin-inline-start: 10px; font-weight: 500; font-size: 13px; color: #a3a5b3; }
+.browser ul { margin: 0; padding: 10px 18px 22px; list-style: none; font-size: 16px; }
+.browser li { display: flex; justify-content: space-between; gap: 12px; padding-block: 9px; border-bottom: 1px solid #23242d; color: #f2f2f5; }
+.browser li span { color: #7f8192; }
+
+@media (min-width: 900px) and (min-height: 680px) {
+  .app { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); }
+  .app:nth-child(2) { top: calc(28px + env(safe-area-inset-top, 0px)); }
+  .app:nth-child(3) { top: calc(40px + env(safe-area-inset-top, 0px)); }
+  .app:nth-child(4) { top: calc(52px + env(safe-area-inset-top, 0px)); }
+  .app:nth-child(5) { top: calc(64px + env(safe-area-inset-top, 0px)); }
+}
+
+/* jump links, site panel, reels */
+.jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.jump a { text-decoration: none; font-weight: 500; font-size: 15px; padding: 9px 16px; border-radius: 999px; border: 1.5px solid var(--fg); }
+.jump a:hover { background: var(--fg); color: var(--bg); }
+.app.wide { grid-template-columns: minmax(0, 1fr); position: static; min-height: 0; gap: 8px; }
+.app.wide .app-text { padding-bottom: 28px; }
+.app.wide p { max-width: 62ch; }
+.shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: end; }
+.shot { margin: 0; border: 1px solid #2a2b36; border-bottom: 0; border-radius: 14px 14px 0 0; overflow: hidden; background: #17181f; }
+.shot img { display: block; width: 100%; height: auto; }
+.reels { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.reel { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.reel video { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 22px; background: #000; }
+.reel figcaption { font-size: 15px; line-height: 1.4; color: var(--muted); }
+.reel figcaption b { display: block; color: var(--fg); font-weight: 600; }
+.block.first { padding-block: 0; }
+
+/* services */
+.block { padding-block: 88px 0; }
+.block > h2 { margin: 0 0 28px; font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 3.6vw, 44px); letter-spacing: -0.03em; line-height: 1.05; }
+:root[lang="he"] .block > h2 { letter-spacing: 0; }
+.offers { border-top: 2px solid var(--fg); }
+.offer { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 8px 40px; padding-block: 26px; border-bottom: 1px solid var(--line); }
+.offer h3 { margin: 0; font-size: 24px; font-weight: 600; line-height: 1.2; }
+.offer p { margin: 0; color: var(--muted); max-width: 52ch; }
+.tools { margin: 28px 0 0; max-width: 70ch; color: var(--muted); }
+.tools b { color: var(--fg); font-weight: 600; }
+
+/* contact */
+.reach { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.way { background: var(--chip); border: 1px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; min-width: 0; }
+.way small { font-size: 14px; color: var(--muted); }
+.way code { font: 600 19px/1.3 var(--font-text); overflow-wrap: anywhere; user-select: all; direction: ltr; }
+.act { font: 600 15px/1 var(--font-text); text-decoration: none; cursor: pointer; background: var(--fg); color: var(--bg); border: 0; border-radius: 999px; padding: 12px 18px; margin-top: auto; }
+.act.quiet { background: none; color: var(--fg); border: 1.5px solid var(--fg); }
+footer { margin-top: 56px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 820px) {
+  .hero { padding-block: 28px 44px; }
+  .hero-row { grid-template-columns: minmax(0, 1fr); }
+  .shelf img { width: 64px; height: 64px; }
+  .app { grid-template-columns: minmax(0, 1fr); padding: 28px 24px 0; min-height: 0; border-radius: 26px; }
+  .app-text { padding-bottom: 8px; }
+  .btn, .later { margin-top: 8px; }
+  .phone { width: 220px; }
+  .bigicon { padding-block: 16px 36px; }
+  .offer { grid-template-columns: minmax(0, 1fr); }
+  .block { padding-block: 60px 0; }
+  .block.first { padding-block: 0; }
+  .shots { grid-template-columns: minmax(0, 1fr); }
+  .reels { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <span class="me" data-i="name">Илья Любимов</span>
+    <div class="langs" role="group" aria-label="Language">
+      <button type="button" id="lang-ru" data-lang="ru" aria-pressed="true">Рус</button>
+      <button type="button" id="lang-he" data-lang="he" aria-pressed="false">עברית</button>
+      <button type="button" id="lang-en" data-lang="en" aria-pressed="false">Eng</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h1 data-i="h1">Приложения, сайты и видео под ключ</h1>
+    <div class="hero-row">
+      <div>
+        <p class="lead" data-i="lead">Я разработчик из Израиля. Работаю один и довожу дело до результата: приложение в App Store, сайт в поиске Google, ролик в ленте.</p>
+        <span class="open"><i></i><span data-i="status">Открыт к работе и заказам</span></span>
+        <nav class="jump"><a href="#apps" data-i="sec_apps">Приложения</a><a href="#sites" data-i="sec_sites">Сайты</a><a href="#video" data-i="sec_video">Видео</a></nav>
+      </div>
+      <ul class="shelf">
+        <li><a href="#alefbet" aria-label="AlefBet"><img src="a/i-alefbet.png" alt="AlefBet" width="84" height="84"></a></li>
+        <li><a href="#subtext" aria-label="Subtext"><img src="a/i-subtext.png" alt="Subtext" width="84" height="84"></a></li>
+        <li><a href="#klita" aria-label="Klita"><img src="a/i-klita.png" alt="Klita" width="84" height="84"></a></li>
+        <li><a href="#chip" aria-label="Chip"><img src="a/i-chip.png" alt="Chip" width="84" height="84"></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="block first" id="apps">
+  <h2 data-i="sec_apps">Приложения</h2>
+  <main class="apps">
+    <article class="app alefbet" id="alefbet">
+      <div class="app-text">
+        <div class="app-id"><img src="a/i-alefbet.png" alt="" width="56" height="56"><span class="state" data-i="st_store">В App Store</span></div>
+        <h2>AlefBet</h2>
+        <p data-i="p_alefbet">Словарь иврита для тех, кто говорит по-русски и по-английски: 11 000+ слов и 3 200+ глаголов с никудом, транскрипцией и карточками. iPhone и iPad, подписка.</p>
+        <p class="made">SwiftUI, Core Data, StoreKit 2</p>
+        <a class="btn" href="https://apps.apple.com/app/id6782951189" target="_blank" rel="noopener" data-i="l_store">Открыть в App Store</a>
+      </div>
+      <div class="app-shot"><div class="phone"><img src="a/s-alefbet.jpg" alt="Экран AlefBet: карточка слова" width="520" height="1130"></div></div>
+    </article>
+
+    <article class="app subtext" id="subtext">
+      <div class="app-text">
+        <div class="app-id"><img src="a/i-subtext.png" alt="" width="56" height="56"><span class="state" data-i="st_store">В App Store</span></div>
+        <h2>Subtext</h2>
+        <p data-i="p_subtext">Анализ переписок с помощью ИИ: загружаешь чат и получаешь разбор. В продаже с сентября 2026, подключена рекламная аналитика.</p>
+        <p class="made">SwiftUI, StoreKit 2, AppsFlyer</p>
+        <a class="btn" href="https://apps.apple.com/app/id6805617382" target="_blank" rel="noopener" data-i="l_store">Открыть в App Store</a>
+      </div>
+      <div class="app-shot"><div class="phone"><img src="a/s-subtext.jpg" alt="Экран Subtext: разбор переписки" width="520" height="1130"></div></div>
+    </article>
+
+    <article class="app klita" id="klita">
+      <div class="app-text">
+        <div class="app-id"><img src="a/i-klita.png" alt="" width="56" height="56"><span class="state">TestFlight</span></div>
+        <h2>Klita</h2>
+        <p data-i="p_klita">Навигатор по израильской бюрократии: сканируешь письмо и видишь, от кого оно, что нужно сделать и к какому сроку. Русский, английский, иврит.</p>
+        <p class="made" data-i="m_klita">SwiftUI, три языка интерфейса</p>
+        <span class="later" data-i="l_demo">Покажу сборку по запросу</span>
+      </div>
+      <div class="app-shot bigicon"><img src="a/i-klita.png" alt="Иконка Klita" width="256" height="256"></div>
+    </article>
+
+    <article class="app chip" id="chip">
+      <div class="app-text">
+        <div class="app-id"><img src="a/i-chip.png" alt="" width="56" height="56"><span class="state">TestFlight</span></div>
+        <h2>Chip</h2>
+        <p data-i="p_chip">Семейный «банк дел»: родитель назначает дела с ценой, ребёнок отмечает выполнение и копит на цель. Данные синхронизируются между устройствами семьи.</p>
+        <p class="made">SwiftUI, CloudKit, WidgetKit</p>
+        <span class="later" data-i="l_demo">Покажу сборку по запросу</span>
+      </div>
+      <div class="app-shot"><div class="phone"><img src="a/s-chip.jpg" alt="Экран Chip: выбор аватара ребёнка" width="520" height="1130"></div></div>
+    </article>
+  </main>
+  </section>
+
+  <section class="block" id="sites">
+    <h2 data-i="sec_sites">Сайты</h2>
+    <article class="app site wide">
+      <div class="app-text">
+        <div class="app-id"><span class="state" data-i="st_live">Работает</span></div>
+        <h2>alefbet.tech</h2>
+        <p data-i="p_site">Сайт приложения AlefBet: лендинг на двух языках и 4 100+ страниц словаря под поисковые запросы. Страницы собирает генератор, который я написал сам.</p>
+        <p class="made">Python, HTML, Search Console</p>
+        <a class="btn" href="https://alefbet.tech" target="_blank" rel="noopener" data-i="l_site">Открыть сайт</a>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="a/site-landing.jpg" alt="Главная страница alefbet.tech" width="1000" height="672"></figure>
+        <figure class="shot"><img src="a/site-slovar.jpg" alt="Раздел словаря на alefbet.tech" width="1000" height="672"></figure>
+      </div>
+    </article>
+  </section>
+
+  <section class="block" id="video">
+    <h2 data-i="sec_video">Видео</h2>
+    <div class="reels">
+      <figure class="reel"><video id="vid-evolve1" controls playsinline preload="none" poster="v/evolve1.jpg" src="v/evolve1.mp4"></video><figcaption><b>Evolve</b><span data-i="v_evolve">Reels для клиники физиотерапии</span></figcaption></figure>
+      <figure class="reel"><video id="vid-evolve2" controls playsinline preload="none" poster="v/evolve2.jpg" src="v/evolve2.mp4"></video><figcaption><b>Evolve</b><span data-i="v_evolve">Reels для клиники физиотерапии</span></figcaption></figure>
+      <figure class="reel"><video id="vid-kz" controls playsinline preload="none" poster="v/kz13.jpg" src="v/kz13.mp4"></video><figcaption><b>Kilometer Zero</b><span data-i="v_kz">Shorts для моего YouTube-канала</span></figcaption></figure>
+      <figure class="reel"><video id="vid-preview" controls playsinline preload="none" poster="v/preview.jpg" src="v/preview.mp4"></video><figcaption><b>AlefBet</b><span data-i="v_preview">Видео-превью для App Store</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 data-i="sec_services">Что могу сделать для вас</h2>
+    <div class="offers">
+      <div class="offer"><h3 data-i="sv1_t">Приложение под ключ</h3><p data-i="sv1_d">От макета до публикации в App Store: интерфейс, подписки и покупки, синхронизация, виджеты.</p></div>
+      <div class="offer"><h3 data-i="sv2_t">Сайт, который находят в поиске</h3><p data-i="sv2_d">Лендинг и тысячи страниц под запросы, которые собираются автоматически из ваших данных.</p></div>
+      <div class="offer"><h3 data-i="sv3_t">Короткие видео</h3><p data-i="sv3_d">Reels и Shorts с моушн-графикой для продукта или бизнеса.</p></div>
+    </div>
+    <p class="tools"><b data-i="tools_t">Чем работаю:</b> Swift, SwiftUI, StoreKit 2, CloudKit, Core Data, WidgetKit, App Store Connect, Python, Next.js, Claude Code. <span data-i="langs_line">Говорю по-русски (родной), на иврите (разговорный) и по-английски (базовый).</span></p>
+  </section>
+
+  <section class="block">
+    <h2 data-i="sec_contact">Напишите мне</h2>
+    <div class="reach">
+      <div class="way"><small>Telegram</small><code id="tg-handle">@vomibuil</code><a class="act" id="open-tg" href="https://t.me/vomibuil" target="_blank" rel="noopener" data-i="tg_open">Написать в Telegram</a></div>
+      <div class="way"><small data-i="c_personal">Личная почта</small><code id="mail-personal">lubimovila813@gmail.com</code><button type="button" class="act quiet" id="copy-personal" data-copy="mail-personal" data-i="copy">Скопировать адрес</button></div>
+      <div class="way"><small data-i="c_project">Почта проектов</small><code id="mail-project">support@alefbet.tech</code><button type="button" class="act quiet" id="copy-project" data-copy="mail-project" data-i="copy">Скопировать адрес</button></div>
+    </div>
+    <footer data-i="foot">Обновлено в ноябре 2026</footer>
+  </section>
+</div>
+
+<script>
+const T = {
+  ru: {
+    title: "Илья Любимов · портфолио", name: "Илья Любимов",
+    h1: "Приложения, сайты и видео под ключ",
+    lead: "Я разработчик из Израиля. Работаю один и довожу дело до результата: приложение в App Store, сайт в поиске Google, ролик в ленте.",
+    sec_apps: "Приложения", sec_sites: "Сайты", sec_video: "Видео",
+    v_evolve: "Reels для клиники физиотерапии", v_kz: "Shorts для моего YouTube-канала", v_preview: "Видео-превью для App Store",
+    status: "Открыт к работе и заказам", st_store: "В App Store", st_live: "Работает",
+    p_alefbet: "Словарь иврита для тех, кто говорит по-русски и по-английски: 11 000+ слов и 3 200+ глаголов с никудом, транскрипцией и карточками. iPhone и iPad, подписка.",
+    p_subtext: "Анализ переписок с помощью ИИ: загружаешь чат и получаешь разбор. В продаже с сентября 2026, подключена рекламная аналитика.",
+    p_klita: "Навигатор по израильской бюрократии: сканируешь письмо и видишь, от кого оно, что нужно сделать и к какому сроку. Русский, английский, иврит.",
+    m_klita: "SwiftUI, три языка интерфейса",
+    p_chip: "Семейный «банк дел»: родитель назначает дела с ценой, ребёнок отмечает выполнение и копит на цель. Данные синхронизируются между устройствами семьи.",
+    p_site: "Сайт приложения AlefBet: лендинг на двух языках и 4 100+ страниц словаря под поисковые запросы. Страницы собирает генератор, который я написал сам.",
+    l_store: "Открыть в App Store", l_site: "Открыть сайт", l_demo: "Покажу сборку по запросу",
+    sec_services: "Что могу сделать для вас",
+    sv1_t: "Приложение под ключ", sv1_d: "От макета до публикации в App Store: интерфейс, подписки и покупки, синхронизация, виджеты.",
+    sv2_t: "Сайт, который находят в поиске", sv2_d: "Лендинг и тысячи страниц под запросы, которые собираются автоматически из ваших данных.",
+    sv3_t: "Короткие видео", sv3_d: "Reels и Shorts с моушн-графикой для продукта или бизнеса.",
+    tools_t: "Чем работаю:", langs_line: "Говорю по-русски (родной), на иврите (разговорный) и по-английски (базовый).",
+    sec_contact: "Напишите мне", tg_open: "Написать в Telegram", c_personal: "Личная почта", c_project: "Почта проектов",
+    copy: "Скопировать адрес", copied: "Скопировано", foot: "Обновлено в ноябре 2026"
+  },
+  en: {
+    title: "Ilia Liubimov · portfolio", name: "Ilia Liubimov",
+    h1: "Apps, websites and video, start to finish",
+    lead: "I'm a developer based in Israel. I work solo and take things all the way: an app on the App Store, a site that shows up in Google, a video in the feed.",
+    sec_apps: "Apps", sec_sites: "Websites", sec_video: "Video",
+    v_evolve: "Reels for a physiotherapy clinic", v_kz: "Shorts for my YouTube channel", v_preview: "App Store preview video",
+    status: "Open to work and projects", st_store: "On the App Store", st_live: "Live",
+    p_alefbet: "A Hebrew dictionary for Russian and English speakers: 11,000+ words and 3,200+ verbs with nikud, transcription and flashcards. iPhone and iPad, subscription.",
+    p_subtext: "AI analysis of chat conversations: upload a chat and get a breakdown. On sale since September 2026, with ad attribution set up.",
+    p_klita: "A guide through Israeli bureaucracy: scan a letter and see who sent it, what you need to do and by when. Russian, English, Hebrew.",
+    m_klita: "SwiftUI, three interface languages",
+    p_chip: "A family chore bank: parents set chores with a price, kids check them off and save toward a goal. Data syncs across the family's devices.",
+    p_site: "The AlefBet website: a landing page in two languages and 4,100+ dictionary pages built for search. The pages come from a generator I wrote myself.",
+    l_store: "Open on the App Store", l_site: "Open the site", l_demo: "Build available on request",
+    sec_services: "What I can build for you",
+    sv1_t: "An app, start to finish", sv1_d: "From mockup to App Store release: interface, subscriptions and purchases, sync, widgets.",
+    sv2_t: "A website people find in search", sv2_d: "A landing page plus thousands of search pages generated automatically from your data.",
+    sv3_t: "Short videos", sv3_d: "Reels and Shorts with motion graphics for a product or a business.",
+    tools_t: "What I work with:", langs_line: "I speak Russian (native), Hebrew (conversational) and English (basic).",
+    sec_contact: "Get in touch", tg_open: "Message on Telegram", c_personal: "Personal email", c_project: "Project email",
+    copy: "Copy address", copied: "Copied", foot: "Updated November 2026"
+  },
+  he: {
+    title: "איליה ליובימוב · תיק עבודות", name: "איליה ליובימוב",
+    h1: "אפליקציות, אתרים וסרטונים מקצה לקצה",
+    lead: "אני מפתח מישראל. עובד לבד ומביא כל פרויקט לתוצאה: אפליקציה ב‑App Store, אתר שמופיע בגוגל, סרטון בפיד.",
+    sec_apps: "אפליקציות", sec_sites: "אתרים", sec_video: "סרטונים",
+    v_evolve: "Reels למרפאת פיזיותרפיה", v_kz: "Shorts לערוץ היוטיוב שלי", v_preview: "סרטון תצוגה ל‑App Store",
+    status: "פתוח לעבודה ולפרויקטים", st_store: "ב‑App Store", st_live: "באוויר",
+    p_alefbet: "מילון עברית לדוברי רוסית ואנגלית: יותר מ‑11,000 מילים ו‑3,200 פעלים עם ניקוד, תעתיק וכרטיסיות. iPhone ו‑iPad, מנוי.",
+    p_subtext: "ניתוח שיחות בעזרת בינה מלאכותית: מעלים צ'אט ומקבלים ניתוח מפורט. במכירה מספטמבר 2026, עם מדידת פרסום.",
+    p_klita: "מדריך לבירוקרטיה הישראלית: סורקים מכתב ורואים ממי הוא, מה צריך לעשות ועד מתי. רוסית, אנגלית, עברית.",
+    m_klita: "SwiftUI, שלוש שפות ממשק",
+    p_chip: "בנק מטלות משפחתי: ההורה קובע מטלות עם מחיר, הילד מסמן ביצוע וחוסך למטרה. הנתונים מסתנכרנים בין מכשירי המשפחה.",
+    p_site: "אתר האפליקציה AlefBet: דף נחיתה בשתי שפות ויותר מ‑4,100 דפי מילון שנבנו לחיפוש. את הדפים יוצר מחולל שכתבתי בעצמי.",
+    l_store: "לפתוח ב‑App Store", l_site: "לפתוח את האתר", l_demo: "גרסה להתנסות לפי בקשה",
+    sec_services: "מה אני יכול לבנות עבורכם",
+    sv1_t: "אפליקציה מקצה לקצה", sv1_d: "מסקיצה ועד פרסום ב‑App Store: ממשק, מנויים ורכישות, סנכרון, ווידג'טים.",
+    sv2_t: "אתר שמוצאים בחיפוש", sv2_d: "דף נחיתה ואלפי דפים לחיפוש שנוצרים אוטומטית מהנתונים שלכם.",
+    sv3_t: "סרטונים קצרים", sv3_d: "Reels ו‑Shorts עם מושן גרפיקס למוצר או לעסק.",
+    tools_t: "הכלים שלי:", langs_line: "אני מדבר רוסית (שפת אם), עברית (ברמת שיחה) ואנגלית (בסיסית).",
+    sec_contact: "כתבו לי", tg_open: "לכתוב בטלגרם", c_personal: "מייל אישי", c_project: "מייל הפרויקטים",
+    copy: "להעתיק כתובת", copied: "הועתק", foot: "עודכן בנובמבר 2026"
+  }
+};
+
+let current = "ru";
+function setLang(lang) {
+  if (!T[lang]) return;
+  current = lang;
+  const root = document.documentElement;
+  root.lang = lang;
+  root.dir = lang === "he" ? "rtl" : "ltr";
+  document.title = T[lang].title;
+  document.querySelectorAll("[data-i]").forEach(function (el) {
+    const v = T[lang][el.dataset.i];
+    if (v) el.textContent = v;
+  });
+  document.querySelectorAll(".langs button").forEach(function (b) {
+    b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+  });
+  try { localStorage.setItem("portfolio-lang", lang); } catch (e) {}
+}
+document.documentElement.lang = "ru";
+document.querySelectorAll(".langs button").forEach(function (b) {
+  b.addEventListener("click", function () { setLang(b.dataset.lang); });
+});
+let saved = null;
+try { saved = localStorage.getItem("portfolio-lang"); } catch (e) {}
+if (saved && saved !== "ru") setLang(saved);
+
+document.querySelectorAll("[data-copy]").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    const target = document.getElementById(btn.dataset.copy);
+    const done = function () {
+      btn.textContent = T[current].copied;
+      setTimeout(function () { btn.textContent = T[current].copy; }, 1600);
+    };
+    const select = function () {
+      const r = document.createRange(); r.selectNodeContents(target);
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(target.textContent).then(done, select);
+    } else { select(); }
+  });
+});
+</script>
+
+</body>
+</html>
